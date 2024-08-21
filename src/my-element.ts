@@ -1,9 +1,10 @@
 import { LitElement, css, html, nothing } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { setup } from '@sl-design-system/sanoma-learning';
-import { faCat, faDog, faFish, faHippo, faHorse, faKiwiBird, faMosquito, faOtter, faShrimp, faSpider, faWorm } from '@fortawesome/free-solid-svg-icons';
-import { Icon } from '@sl-design-system/icon';
-import { ifDefined } from 'lit/directives/if-defined.js';
+import { faArrowRotateLeft, faArrowUpRightFromSquare, faAt, faBabyCarriage, faCaretDown, faCaretUp, faCat, faCheck, faChevronCircleLeft, faChevronCircleRight, faChevronDown, faChevronLeft, faChevronRight, faChevronUp, faCircleInfo, faClock, faDog, faDownload, faEllipsisVertical, faEye, faEyeSlash, faFileArchive, faFish, faFolder, faFolderBlank, faFolderClosed, faFolderOpen, faGripLinesVertical, faHippo, faHorse, faImage, faKiwiBird, faLayerGroup, faLock, faMagnifyingGlass, faMagnifyingGlassPlus, faMosquito, faOtter, faPencil, faPlus, faRectangleList, faRotate, faShrimp, faSignalPerfect, faSpider, faTrash, faTriangleExclamation, faUser, faWorm, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { fas } from  '@fortawesome/free-solid-svg-icons';
+import { Icon, IconDefinition } from '@sl-design-system/icon'; 
+import { faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons/faArrowAltCircleDown';
 
 setup();
 /**
@@ -26,7 +27,12 @@ export class MyElement extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
 
-    Icon.register(faCat);
+    Icon.register(faCat as IconDefinition);
+    console.log(Object.entries(fas).length, 'icons have been added to the icon registry');
+    for(const icon in fas){
+      Icon.register(fas[icon] as IconDefinition);
+
+    }
   }
 
   render() {
@@ -59,15 +65,65 @@ export class MyElement extends LitElement {
     `
   }
 
-  private #loadSingle() {
+  #loadSingle() {
 
-    Icon.register(faDog);
+    Icon.register(faDog as IconDefinition);
     this.loadedOnClick = 'fas-dog';
   }
 
-  private #loadMultiple() {
+  #loadMultiple() {
 
-    Icon.register(faHippo, faFish, faOtter, faKiwiBird, faWorm, faSpider, faShrimp, faMosquito, faHorse);
+    Icon.register(
+        faHippo as IconDefinition,
+        faFish as IconDefinition,
+        faOtter as IconDefinition,
+        faKiwiBird as IconDefinition,
+        faWorm as IconDefinition,
+        faSpider as IconDefinition,
+        faShrimp as IconDefinition,
+        faMosquito as IconDefinition,
+        faHorse as IconDefinition,
+        faArrowRotateLeft as IconDefinition,
+        faArrowAltCircleDown as IconDefinition,
+        faArrowUpRightFromSquare as IconDefinition,
+        faAt as IconDefinition,
+        faBabyCarriage as IconDefinition,
+        faCaretDown as IconDefinition,
+        faCaretUp as IconDefinition,
+        faCheck as IconDefinition,
+        faChevronDown as IconDefinition,
+        faChevronLeft as IconDefinition,
+        faChevronRight as IconDefinition,
+        faChevronCircleLeft as IconDefinition,
+        faChevronCircleRight as IconDefinition,
+        faChevronUp as IconDefinition,
+        faCircleInfo as IconDefinition,
+        faClock as IconDefinition,
+        faDownload as IconDefinition,
+        faEllipsisVertical as IconDefinition,
+        faEye as IconDefinition,
+        faEyeSlash as IconDefinition,
+        faFileArchive as IconDefinition,
+        faFolder as IconDefinition,
+        faFolderClosed as IconDefinition,
+        faFolderBlank as IconDefinition,
+        faFolderOpen as IconDefinition,
+        faGripLinesVertical as IconDefinition,
+        faImage as IconDefinition,
+        faLayerGroup as IconDefinition,
+        faLock as IconDefinition,
+        faMagnifyingGlass as IconDefinition,
+        faMagnifyingGlassPlus as IconDefinition,
+        faPencil as IconDefinition,
+        faPlus as IconDefinition,
+        faRectangleList as IconDefinition,
+        faRotate as IconDefinition,
+        faSignalPerfect as IconDefinition,
+        faTrash as IconDefinition,
+        faTriangleExclamation as IconDefinition,
+        faUser as IconDefinition,
+        faXmark as IconDefinition
+      );
     this.zooLoaded = true;
   }
 
